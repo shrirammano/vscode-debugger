@@ -6,7 +6,7 @@ export const getUserStatus = (userId: string) => {
   if(!userInformation) return;
 
   const currentDate = moment();
-  const userStatus = moment(userInformation.certifiedDate).isValid() && currentDate.diff(userInformation.certifiedDate) < 365 ? "active" : "inactive";
+  const userStatus = moment(userInformation.certifiedDate).isValid() && currentDate.diff(userInformation.certifiedDate, "days") < 365 ? "Active" : "Inactive";
   return {
     ...userInformation,
     userStatus
